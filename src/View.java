@@ -32,6 +32,13 @@ public class View extends JPanel {
 	private int orcY;
 	private Direction orcDirect;
 	
+	public int getImageHeight() {
+		return imageHeight;
+	}
+	public int getImageWidth() {
+		return imageWidth;
+	}
+	
 	public View() {
 		//Jframe setup
 		JFrame frame = new JFrame();
@@ -46,12 +53,34 @@ public class View extends JPanel {
     		for (int i = 0; i < numOfDirections; i++) {
     			sourcePics[i] = createImage(Direction.values()[i].getName());
     		}
+    		
+    		// all animations loaded into 2d array
+    		for (int i = 0; i < numOfDirections; i++) {
+    			for (int x = 0; x < picNum; x++) {
+    				animationFrames[i][x] = sourcePics[i].getSubimage(imageWidth*x, 0, imageWidth, imageHeight);
+    			}
+    		}
+    		
+    		
 	}
-	
 	
 	public void paint(Graphics g) {
 		picNum = (picNum + 1) % frameCount;
 		g.drawImage(animationFrames[orcDirect.ordinal()][picNum], orcX, orcY, Color.gray, this);
+	}
+	
+	public void update(int x, int y, Direction d) {
+		try {
+			orcX = x;
+			orcY = y;
+			orcDirect = d;
+			repaint();
+			Thread.sleep(100);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		
 	}
 	
     private BufferedImage createImage(String fileName){
