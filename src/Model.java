@@ -18,6 +18,7 @@ public class Model {
     private int frameHeight;
     private int imgWidth;
     private int imgHeight;
+    private Direction d;
     
     public Model (int fWidth,int fHeight,int iWidth,int iHeight) {
     		frameWidth = fWidth;
@@ -36,11 +37,52 @@ public class Model {
     		yIncr*=-1;
     	} // out of bounds vertically
     	
+    	
     	// UPDATE POSITION
     		xloc += xIncr;
     		yloc += yIncr;
     		
-    	// DETERMINE DIRECTION
     		
+    	// DETERMINE DIRECTION
+    		boolean findingDirection = true;
+    		while (findingDirection) {
+    		// using a while loop so we can stop checking for directions
+    		// after the correct one has been found
+    			if (xIncr == 0 && yIncr > 0) {
+        			d = Direction.NORTH;
+        			break;
+        		}
+        		if (xIncr > 0 && yIncr > 0) {
+        			d = Direction.NORTHEAST;
+        			break;
+        		}
+        		if (xIncr > 0 && yIncr == 0) {
+        			d = Direction.EAST;
+        			break;
+        		}
+        		if (xIncr > 0 && yIncr < 0) {
+        			d = Direction.SOUTHEAST;
+        			break;
+        		}
+        		if (xIncr == 0 && yIncr < 0) {
+        			d = Direction.SOUTH;
+        			break;
+        		}
+        		if (xIncr < 0 && yIncr < 0) {
+        			d = Direction.SOUTHWEST;
+        			break;
+        		}
+        		if (xIncr < 0 && yIncr == 0) {
+        			d = Direction.EAST;
+        			break;
+        		}
+        		if (xIncr < 0 && yIncr > 0) {
+        			d = Direction.NORTHEAST;
+        			break;
+        		}
+        		else {
+        			findingDirection = false;
+        		}
+    		}
     }
 }
