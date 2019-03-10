@@ -28,14 +28,9 @@ public class View extends JPanel {
 	int picNum = 0;
 	BufferedImage[] sourcePics;
 	BufferedImage[][] animationFrames;
-	private int orcX;
-	private int orcY;
-	private Direction orcDirect;
-	
-	public static void main(String[] args) {
-		Controller c = new Controller();
-    		c.start();
-}
+	private int orcX = 0;
+	private int orcY = 0;
+	private Direction orcDirect = Direction.NORTH;
 	
 	public int getImageHeight() {
 		return imageHeight;
@@ -45,14 +40,6 @@ public class View extends JPanel {
 	}
 	
 	public View() {
-		//Jframe setup
-		JFrame frame = new JFrame();
-		frame.getContentPane().add(this);
-		frame.setBackground(Color.gray);
-    		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    		frame.setSize(frameWidth, frameHeight);
-    		frame.setVisible(true);
-    		
     		//adding pics for animation frames to array
     		sourcePics = new BufferedImage[numOfDirections];
     		for (int i = 0; i < numOfDirections; i++) {
@@ -67,7 +54,13 @@ public class View extends JPanel {
     			}
     		}
     		
-    		
+    		//Jframe setup
+    		JFrame frame = new JFrame();
+    		frame.getContentPane().add(this);
+    		frame.setBackground(Color.gray);
+        		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        		frame.setSize(frameWidth, frameHeight);
+        		frame.setVisible(true);
 	}
 	
 	public void paint(Graphics g) {
@@ -76,12 +69,12 @@ public class View extends JPanel {
 	}
 	
 	public void update(int x, int y, Direction d) {
-		try {
 			orcX = x;
 			orcY = y;
 			orcDirect = d;
 			setBackground(Color.gray);
 			repaint();
+		try {
 			Thread.sleep(100);
 		}
 		catch (Exception e){

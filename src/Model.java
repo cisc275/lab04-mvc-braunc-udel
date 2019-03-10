@@ -55,11 +55,11 @@ public class Model {
     
     public void updateLocationAndDirection() {
     	// COLLISION DETECTION
-    	if (xloc < 0 || xloc >= frameWidth - imgWidth) {
+    	if (xloc < 0 || xloc > frameWidth - imgWidth) {
     		xIncr*=-1;
     	} // out of bounds horizontally
     	
-    	if (yloc < 0 || yloc >= frameHeight - imgHeight) {
+    	if (yloc < 0 || yloc > frameHeight - imgHeight) {
     		yIncr*=-1;
     	} // out of bounds vertically
     	
