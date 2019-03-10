@@ -8,6 +8,7 @@
  * load images for all direction (an image should only be loaded once!!! why?)
  **/
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -60,6 +61,7 @@ public class View extends JPanel {
     		frame.setBackground(Color.gray);
         		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         		frame.setSize(frameWidth, frameHeight);
+        		frame.setResizable(false);
         		frame.setVisible(true);
 	}
 	
