@@ -18,7 +18,7 @@ public class Model {
     private int frameHeight;
     private int imgWidth;
     private int imgHeight;
-    private Direction d;
+    private Direction direction;
     
     public Model (int fWidth,int fHeight,int iWidth,int iHeight) {
     		frameWidth = fWidth;
@@ -26,6 +26,32 @@ public class Model {
     		imgWidth = iWidth;
     		imgHeight = iHeight;
     }
+    
+    // getters for frame and image
+    public int getWidth() {
+    		return frameWidth;
+    }
+    public int getHeight() {
+    		return frameHeight;
+    }
+    public int getImageWidth() {
+    		return imgWidth;
+    }
+    public int getImageHeight() {
+    		return imgHeight;
+    }
+    
+    //getters for orc
+    public int getX() {
+    		return xloc;
+    }
+    public int getY() {
+    		return yloc;
+    }
+    public Direction getDirect() {
+    		return direction;
+    }
+    
     
     public void updateLocationAndDirection() {
     	// COLLISION DETECTION
@@ -49,35 +75,35 @@ public class Model {
     		// using a while loop so we can stop checking for directions
     		// after the correct one has been found
     			if (xIncr == 0 && yIncr > 0) {
-        			d = Direction.NORTH;
+        			direction = Direction.NORTH;
         			break;
         		}
         		if (xIncr > 0 && yIncr > 0) {
-        			d = Direction.NORTHEAST;
+        			direction = Direction.NORTHEAST;
         			break;
         		}
         		if (xIncr > 0 && yIncr == 0) {
-        			d = Direction.EAST;
+        			direction = Direction.EAST;
         			break;
         		}
         		if (xIncr > 0 && yIncr < 0) {
-        			d = Direction.SOUTHEAST;
+        			direction = Direction.SOUTHEAST;
         			break;
         		}
         		if (xIncr == 0 && yIncr < 0) {
-        			d = Direction.SOUTH;
+        			direction = Direction.SOUTH;
         			break;
         		}
         		if (xIncr < 0 && yIncr < 0) {
-        			d = Direction.SOUTHWEST;
+        			direction = Direction.SOUTHWEST;
         			break;
         		}
         		if (xIncr < 0 && yIncr == 0) {
-        			d = Direction.EAST;
+        			direction = Direction.EAST;
         			break;
         		}
         		if (xIncr < 0 && yIncr > 0) {
-        			d = Direction.NORTHEAST;
+        			direction = Direction.NORTHEAST;
         			break;
         		}
         		else {
