@@ -32,6 +32,11 @@ public class View extends JPanel {
 	private int orcY;
 	private Direction orcDirect;
 	
+	public static void main(String[] args) {
+		Controller c = new Controller();
+    		c.start();
+}
+	
 	public int getImageHeight() {
 		return imageHeight;
 	}
@@ -55,8 +60,9 @@ public class View extends JPanel {
     		}
     		
     		// all animations loaded into 2d array
+    		animationFrames = new BufferedImage[numOfDirections][frameCount];
     		for (int i = 0; i < numOfDirections; i++) {
-    			for (int x = 0; x < picNum; x++) {
+    			for (int x = 0; x < frameCount; x++) {
     				animationFrames[i][x] = sourcePics[i].getSubimage(imageWidth*x, 0, imageWidth, imageHeight);
     			}
     		}
@@ -74,6 +80,7 @@ public class View extends JPanel {
 			orcX = x;
 			orcY = y;
 			orcDirect = d;
+			setBackground(Color.gray);
 			repaint();
 			Thread.sleep(100);
 		}

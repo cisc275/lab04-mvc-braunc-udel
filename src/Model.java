@@ -74,11 +74,11 @@ public class Model {
     		while (findingDirection) {
     		// using a while loop so we can stop checking for directions
     		// after the correct one has been found
-    			if (xIncr == 0 && yIncr > 0) {
+    			if (xIncr == 0 && yIncr < 0) {
         			direction = Direction.NORTH;
         			break;
         		}
-        		if (xIncr > 0 && yIncr > 0) {
+        		if (xIncr > 0 && yIncr < 0) {
         			direction = Direction.NORTHEAST;
         			break;
         		}
@@ -86,24 +86,24 @@ public class Model {
         			direction = Direction.EAST;
         			break;
         		}
-        		if (xIncr > 0 && yIncr < 0) {
+        		if (xIncr > 0 && yIncr > 0) {
         			direction = Direction.SOUTHEAST;
         			break;
         		}
-        		if (xIncr == 0 && yIncr < 0) {
+        		if (xIncr == 0 && yIncr > 0) {
         			direction = Direction.SOUTH;
         			break;
         		}
-        		if (xIncr < 0 && yIncr < 0) {
+        		if (xIncr < 0 && yIncr > 0) {
         			direction = Direction.SOUTHWEST;
         			break;
         		}
         		if (xIncr < 0 && yIncr == 0) {
-        			direction = Direction.EAST;
+        			direction = Direction.WEST;
         			break;
         		}
-        		if (xIncr < 0 && yIncr > 0) {
-        			direction = Direction.NORTHEAST;
+        		if (xIncr < 0 && yIncr < 0) {
+        			direction = Direction.NORTHWEST;
         			break;
         		}
         		else {
